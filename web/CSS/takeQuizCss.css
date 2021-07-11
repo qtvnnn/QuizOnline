@@ -1,0 +1,53 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 15, 2020, 2:54:53 PM
+    Author     : tranb
+*/
+.color-user{
+    padding-right: 1px;
+    position: relative;
+    left: 87px;
+    top: -22px;
+}
+.num {
+    width: 100px;
+}
+.button-start{
+    position: relative;
+    left: 154px;
+    top: 80px;
+}
+.button-next{
+    position: relative;
+    left: 5px;
+    top: -10px;
+}
+.button-submit{
+    position: relative;
+    left: 471px;
+    top: -11px;
+}
+.hidden{
+    display: none;
+    visibility: hidden;
+}
+.question-zone{
+    position: relative;
+    left: 2px;
+    top: -25px;
+}
+.time-remaining{
+    position: relative;
+    left: 370px;
+    top: -34px; 
+}
+.time-color{
+    position: relative;
+    left: 492px;
+    top: -51px;
+    color: red;
+}

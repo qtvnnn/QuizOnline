@@ -1,12 +1,11 @@
-/**
- * Copyright (C) 2021, FPT University
- * J3.L.P0001
- * Online Quiz.
+/*
+ * Copyright (C) 2021, FPT University<br>
+ * J3.L.P0001<br>
+ * Online Quiz<br>
  *
- * Record of change:
- * DATE         VERSION         Author
- * 2021-02-23   1.0             DungHT
- *
+ * Record of change:<br>
+ * DATE          Version    Author           DESCRIPTION<br>
+ * 2021-05-29    1.0        NangNN           First Version<br>
  */
 package controller;
 
@@ -17,11 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * This class extends from abstract class BaseAuthenticationController.
- * Processes: - Log out of the page
+ * This class uses <code>invalidate()</code> method to cancel all saved sessions
+ * Redirects the user to the <code>login.jsp</code> page.
  *
- * Exception: - If on/output failed, it will return to error page.
- *
- * @author Dung
+ * @author nangnnhe130538
  */
 public class LogoutController extends BaseAuthenticationController {
 
@@ -36,9 +34,11 @@ public class LogoutController extends BaseAuthenticationController {
     }// </editor-fold>
 
     /**
-     * reset the session and redirect to the login page
-     * @param req. It is <code>javax.servlet.http.HttpServletRequest</code>
-     * @param resp. It is <code>javax.servlet.http.HttpServletResponse</code>
+     * Uses <code>invalidate()</code> method to cancel all saved sessions. then redirects 
+     * the user to the <code>login.jsp</code> page.
+     * 
+     * @param req it is a object of <code>javax.servlet.http.HttpServletRequest</code>
+     * @param resp it is a object of <code>javax.servlet.http.HttpServletResponse</code>
      * @throws ServletException
      * @throws IOException 
      */

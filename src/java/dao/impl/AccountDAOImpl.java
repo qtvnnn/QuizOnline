@@ -1,12 +1,11 @@
-/**
- * Copyright (C) 2021, FPT University
- * J3.L.P0001
- * Online Quiz.
+/*
+ * Copyright (C) 2021, FPT University<br>
+ * J3.L.P0001<br>
+ * Online Quiz<br>
  *
- * Record of change:
- * DATE         VERSION         Author
- * 2021-02-23   1.0             DungHT
- *
+ * Record of change:<br>
+ * DATE          Version    Author           DESCRIPTION<br>
+ * 2021-05-29    1.0        NangNN           First Version<br>
  */
 package dao.impl;
 
@@ -20,23 +19,23 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 /**
- * This class implements from class interface AccountDAO.
- * This class contains method to query select data from the table Account.
- There are get Account by username,check mail exist and add account new account.
- * 
- * @author Dung
+ * This class implements functions of the <code>AccountDAO</code> interface.<br>
+ * This class contains methods to query select data from the table <code>Account</code>.<br>
+ * There are get <code>Account</code> by username, check email exists, add <code>Account</code>.
+ *
+ * @author nangnnhe130538
  */
 public class AccountDAOImpl extends DBContext implements AccountDAO {
 
     /**
-     * Search and retrieve account data according to the username entered by the user
+     * Get a record account from <code>Account</code> table by username in the database
      * 
-     * @param user. It is account <code>java.lang.String</code>
-     * @return account <code>Account</code> object
+     * @param userName it is a <code>java.lang.String</code>
+     * @return account it is an <code>Option</code> object
      * @throws Exception 
      */
     @Override
-    public Account getAccountByUser(String user) throws Exception {
+    public Account getAccountByUser(String userName) throws Exception {
         UserTypeDAO userTypeDAO = new UserTypeDAOImpl();
         ResultSet rs = null;
         PreparedStatement statement = null;
@@ -49,7 +48,7 @@ public class AccountDAOImpl extends DBContext implements AccountDAO {
 
             conn = getConnection();
             statement = conn.prepareStatement(sql);
-            statement.setString(1, user);
+            statement.setString(1, userName);
             rs = statement.executeQuery();
             if (rs.next()) {
                 Account account = new Account();
@@ -71,10 +70,10 @@ public class AccountDAOImpl extends DBContext implements AccountDAO {
     }
 
     /**
-     * Check to see if the email address when registered user already exists in the database
+     * Check the email address when user registered already exists in the database
      * 
-     * @param email. It is account <code>java.lang.String</code>
-     * @return boolean
+     * @param email it is a <code>java.lang.String</code>
+     * @return true/false it is a <code>boolean</code>
      * @throws Exception 
      */
     @Override
@@ -103,13 +102,13 @@ public class AccountDAOImpl extends DBContext implements AccountDAO {
     }
 
     /**
-     * Add account new user account to the database
+     * Insert a new record account to <code>Account</code> table in the database
      * 
-     * @param a. It is account Account
+     * @param account it is an <code>Option</code> object
      * @throws Exception 
      */
     @Override
-    public void addAcount(Account a) throws Exception {
+    public void addAcount(Account account) throws Exception {
         ResultSet rs = null;
         PreparedStatement statement = null;
         Connection conn = null;
@@ -126,10 +125,10 @@ public class AccountDAOImpl extends DBContext implements AccountDAO {
                     + "           ,?)";
             conn = getConnection();
             statement = conn.prepareStatement(sql);
-            statement.setString(1, a.getUserName());
-            statement.setString(2, a.getPassword());
-            statement.setString(3, a.getEmail());
-            statement.setInt(4, a.getUserType().getId());
+            statement.setString(1, account.getUserName());
+            statement.setString(2, account.getPassword());
+            statement.setString(3, account.getEmail());
+            statement.setInt(4, account.getUserType().getId());
             statement.executeUpdate();
         } catch (Exception ex) {
             throw ex;

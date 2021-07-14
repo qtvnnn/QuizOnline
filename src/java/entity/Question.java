@@ -1,105 +1,108 @@
-/**
- * Copyright (C) 2021, FPT University
- * J3.L.P0001
- * Online Quiz.
+/*
+ * Copyright (C) 2021, FPT University<br>
+ * J3.L.P0001<br>
+ * Online Quiz<br>
  *
- * Record of change:
- * DATE         VERSION         Author
- * 2021-02-23   1.0             DungHT
- *
+ * Record of change:<br>
+ * DATE          Version    Author           DESCRIPTION<br>
+ * 2021-05-29    1.0        NangNN           First Version<br>
  */
 package entity;
 
 import java.sql.Date;
 
 /**
- * This class represents the Question table in Database
+ * This class uses to contain attributes and methods getter, setter of <code>Question</code> object
+ * This class represents the <code>Question</code> table in database
  *
- * @author Dung
+ * @author nangnnhe130538
  */
 public class Question {
 
     /**
-     * Question id
+     * <code>Question</code> id
      */
     private int id;
     /**
-     * Question content
+     * <code>Question</code> content
      */
     private String content;
     /**
-     * Question date create
+     * <code>Question</code> dateCreate
      */
-    private Date date_Create;
+    private Date dateCreate;
 
     /**
-     * Constructor
+     * Constructor with no parameter
      */
     public Question() {
     }
 
     /**
-     * Constructor
+     * Constructor with parameter
      *
-     * @param id
-     * @param content
-     * @param date_Create
+     * @param id it is an <code>int</code>
+     * @param content it is a <code>java.lang.String</code>
+     * @param dateCreate it is a <code>java.sql.Date</code>
      */
-    public Question(int id, String content, Date date_Create) {
+    public Question(int id, String content, Date dateCreate) {
         this.id = id;
         this.content = content;
-        this.date_Create = date_Create;
+        this.dateCreate = dateCreate;
     }
 
     /**
-     * Get date_create from the Question object
+     * Get value from dateCreate attribute of <code>Question</code> class. <br>
      *
-     * @return date_create
+     * @return dateCreate it is an <code>java.sql.Date</code>
      */
-    public Date getDate_Create() {
-        return date_Create;
+    public Date getDateCreate() {
+        return dateCreate;
     }
 
     /**
-     * Set date_create to the Question object
+     * Set value to dateCreate attribute of <code>Question</code> class
      *
-     * @param date_Create
+     * @param dateCreate it is a <code>java.sql.Date</code>
+     *
      */
-    public void setDate_Create(Date date_Create) {
-        this.date_Create = date_Create;
+    public void setDateCreate(Date dateCreate) {
+        this.dateCreate = dateCreate;
     }
 
     /**
-     * Get id from the Question object
+     * Get value from id attribute of <code>Question</code> class. <br>
      *
-     * @return id
+     * @return id it is an <code>int</code>
      */
     public int getId() {
         return id;
     }
 
     /**
-     * Set id to the Question object
+     * Set value to id attribute of <code>Question</code> class
      *
-     * @param id
+     * @param id it is an <code>int</code>
+     *
      */
     public void setId(int id) {
         this.id = id;
     }
 
     /**
-     * Get content from the Question object
+     * Get value from content attribute of <code>Question</code> class. <br>
      *
-     * @return Content
+     * @return content it is an <code>java.lang.String</code>
      */
     public String getContent() {
         return content;
     }
 
     /**
-     * Set content to the Question object
+     * Set value to content attribute of <code>Question</code> class
      *
-     * @param content
+     * @param content it is a <code>java.lang.String</code>
+     *
      */
     public void setContent(String content) {
         this.content = content;

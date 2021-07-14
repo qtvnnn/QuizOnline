@@ -1,12 +1,11 @@
-/**
- * Copyright (C) 2021, FPT University
- * J3.L.P0001
- * Online Quiz.
+/*
+ * Copyright (C) 2021, FPT University<br>
+ * J3.L.P0001<br>
+ * Online Quiz<br>
  *
- * Record of change:
- * DATE         VERSION         Author
- * 2021-02-23   1.0             DungHT
- *
+ * Record of change:<br>
+ * DATE          Version    Author           DESCRIPTION<br>
+ * 2021-05-29    1.0        NangNN           First Version<br>
  */
 package filter;
 
@@ -25,18 +24,19 @@ import javax.servlet.http.HttpServletResponse;
  * 
  * This class helps check if the url is valid or not
  * 
- * @author Dung
+ * @author nangnnhe130538
  */
 public class MyFilter implements Filter {
 
     /**
      * 
-     * @param request servlet request. It is <code>javax.servlet.http.HttpServletRequest</code>
-     * @param response servlet response. It is <code>javax.servlet.http.HttpServletResponse</code>
-     * @param chain. It is <code>javax.servlet.FilterChain</code>
+     * @param request it is a object of <code>javax.servlet.http.HttpServletRequest</code>
+     * @param response it is a object of  <code>javax.servlet.http.HttpServletResponse</code>
+     * @param chain it is a object of <code>javax.servlet.FilterChain</code>
      * @throws IOException
      * @throws ServletException 
      */
+    @Override
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {

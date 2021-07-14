@@ -1,36 +1,42 @@
-/**
- * Copyright (C) 2021, FPT University
- * J3.L.P0001
- * Online Quiz.
+/*
+ * Copyright (C) 2021, FPT University<br>
+ * J3.L.P0001<br>
+ * Online Quiz<br>
  *
- * Record of change:
- * DATE         VERSION         Author
- * 2021-02-23   1.0             DungHT
- *
+ * Record of change:<br>
+ * DATE          Version    Author           DESCRIPTION<br>
+ * 2021-05-29    1.0        NangNN           First Version<br>
  */
 package entity;
 
 /**
- * This class represents the UserType table in Database
+ * This class uses to contain attributes and methods getter, setter of <code>UserType</code> object
+ * This class represents the <code>UserType</code> table in database
  *
- * @author Dung
+ * @author nangnnhe130538
  */
 public class UserType {
 
     /**
-     * UserType id
+     * <code>UserType</code> id
      */
     private int id;
     /**
-     * UserType type
+     * <code>UserType</code> type
      */
     private String type;
 
     /**
-     * Constructor
+     * Constructor with no parameter
+     */
+    public UserType() {
+    }
+
+    /**
+     * Constructor with parameter
      *
-     * @param id
-     * @param type
+     * @param id it is an <code>int</code>
+     * @param type it is a <code>java.lang.String</code>
      */
     public UserType(int id, String type) {
         this.id = id;
@@ -38,45 +44,41 @@ public class UserType {
     }
 
     /**
-     * Constructor
-     */
-    public UserType() {
-    }
-
-    /**
-     * Get id from the UserType object
+     * Get value from id attribute of <code>UserType</code> class. <br>
      *
-     * @return id
+     * @return id it is an <code>int</code>
      */
     public int getId() {
         return id;
     }
 
     /**
-     * Set id to the Question object
+     * Set value to id attribute of <code>UserType</code> class
      *
-     * @param id
+     * @param id id it is an <code>int</code>
+     *
      */
     public void setId(int id) {
         this.id = id;
     }
 
     /**
-     * Get type from the UserType object
+     * Get value from type attribute of <code>UserType</code> class. <br>
      *
-     * @return type
+     * @return type it is a <code>java.lang.String</code>
      */
     public String getType() {
         return type;
     }
 
     /**
-     * Set type to the Question object
+     * Set value to type attribute of <code>UserType</code> class
      *
-     * @param Type
+     * @param type it is a <code>java.lang.String</code>
+     *
      */
-    public void setType(String Type) {
-        this.type = Type;
+    public void setType(String type) {
+        this.type = type;
     }
 
 }

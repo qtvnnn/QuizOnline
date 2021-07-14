@@ -1,12 +1,11 @@
-/**
- * Copyright (C) 2021, FPT University
- * J3.L.P0001
- * Online Quiz.
+/*
+ * Copyright (C) 2021, FPT University<br>
+ * J3.L.P0001<br>
+ * Online Quiz<br>
  *
- * Record of change:
- * DATE         VERSION         Author
- * 2021-02-23   1.0             DungHT
- *
+ * Record of change:<br>
+ * DATE          Version    Author           DESCRIPTION<br>
+ * 2021-05-29    1.0        NangNN           First Version<br>
  */
 package controller;
 
@@ -14,7 +13,6 @@ import dao.AccountDAO;
 import dao.impl.AccountDAOImpl;
 import entity.Account;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,20 +20,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Processes: - Get username input and compare it with username data in the
- * database to perform login
+ * This class uses function in <code>DigitalDAO</code> to get username input and compare it with 
+ * username data in the database to perform login
+ * Login success redirects to <code>HomeController</code>
  *
- * Exception: - If on/output failed, it will return to error page.
- *
- * @author Dung
+ * @author nangnnhe130538
  */
 public class LoginController extends HttpServlet {
 
     /**
      * Handles the HTTP <code>GET</code> method.
+     * Redirects the user to the <code>login.jsp</code> page.
      *
-     * @param request servlet request. It is <code>javax.servlet.http.HttpServletRequest</code>
-     * @param response servlet response. It is <code>javax.servlet.http.HttpServletResponse</code>
+     * @param request it is a object of <code>javax.servlet.http.HttpServletRequest</code>
+     * @param response it is a object of <code>javax.servlet.http.HttpServletResponse</code>
      * @throws ServletException if account servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
@@ -46,12 +44,13 @@ public class LoginController extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method. 
-     * 
-     * Get the username and password entered by the username to compare it with the data in the database
+     * Handles the HTTP <code>POST</code> method.
+     * Use <code>getAccountByUser</code> function in <code>AccountDAO</code> class to compare username input
+     * with username data in the database to perform login
+     * Login success redirects to <code>HomeController</code>
      *
-     * @param request servlet request. It is <code>javax.servlet.http.HttpServletRequest</code>
-     * @param response servlet response. It is <code>javax.servlet.http.HttpServletResponse</code>
+     * @param request it is a object of <code>javax.servlet.http.HttpServletRequest</code>
+     * @param response it is a object of <code>javax.servlet.http.HttpServletResponse</code>
      * @throws ServletException if account servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */

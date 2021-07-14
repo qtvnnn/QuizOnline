@@ -1,12 +1,11 @@
-/**
- * Copyright (C) 2021, FPT University
- * J3.L.P0001
- * Online Quiz.
+/*
+ * Copyright (C) 2021, FPT University<br>
+ * J3.L.P0001<br>
+ * Online Quiz<br>
  *
- * Record of change:
- * DATE         VERSION         Author
- * 2021-02-23   1.0             DungHT
- *
+ * Record of change:<br>
+ * DATE          Version    Author           DESCRIPTION<br>
+ * 2021-05-29    1.0        NangNN           First Version<br>
  */
 package controller;
 
@@ -61,7 +60,7 @@ public class ManagerQuizController extends BaseAuthenticationController {
             }
             int page = Integer.parseInt(currentPage);
             int pagecount = (count % numberInPage == 0) ? count / numberInPage : count / numberInPage + 1;
-            ArrayList<Question> listQuestion = questionDAO.getListQuestionsPadding(page, numberInPage);
+            ArrayList<Question> listQuestion = questionDAO.getListQuestionsPaging(page, numberInPage);
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
             request.setAttribute("df", dateFormat);
             request.setAttribute("count", count);
@@ -102,7 +101,7 @@ public class ManagerQuizController extends BaseAuthenticationController {
                 currentPage = "1";
             }
             int page = Integer.parseInt(currentPage);
-            ArrayList<Question> listQuestion = questionDAO.getListQuestionsPadding(page, numberInPage);
+            ArrayList<Question> listQuestion = questionDAO.getListQuestionsPaging(page, numberInPage);
             //load list on page
             int pagecount = (count % numberInPage == 0) ? count / numberInPage : count / numberInPage + 1;
             //caculate munber of page

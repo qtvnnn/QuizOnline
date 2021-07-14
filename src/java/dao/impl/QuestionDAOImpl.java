@@ -1,12 +1,11 @@
-/**
- * Copyright (C) 2021, FPT University
- * J3.L.P0001
- * Online Quiz.
+/*
+ * Copyright (C) 2021, FPT University<br>
+ * J3.L.P0001<br>
+ * Online Quiz<br>
  *
- * Record of change:
- * DATE         VERSION         Author
- * 2021-02-23   1.0             DungHT
- *
+ * Record of change:<br>
+ * DATE          Version    Author           DESCRIPTION<br>
+ * 2021-05-29    1.0        NangNN           First Version<br>
  */
 package dao.impl;
 
@@ -23,19 +22,21 @@ import java.util.logging.Logger;
 
 
 /**
- * This class implements from class interface QuestionDAO.
- * This class contains method to query select data from the table Question.
- * There are get list question,count the number of questions,get question by id question,delete question by id, add new a question.
- * 
- * @author Dung
+ * This class implements functions of the <code>QuestionDAO</code> interface.<br>
+ * This class contains methods to query select data from the table <code>Question</code>.<br>
+ * There are get Top of <code>Question</code>, get all quantity of <code>Question</code>, get 
+ * <code>Question</code> by Id, delete <code>Question</code> by Id, insert <code>Question</code>,
+ * get Id of last <code>Question</code>
+ *
+ * @author nangnnhe130538
  */
 public class QuestionDAOImpl extends DBContext implements QuestionDAO{
 
     /**
-     * Get random questions according to the number of questions that the user needs
+     * Get a number of the latest questions from <code>Question</code> table in the database
      * 
-     * @param top. It is int number.
-     * @return a list <code>Question</code> object
+     * @param top it is an <code>int</code> number  
+     * @return a list of <code>Question</code> object. It is a <code>java.util.List</code> object
      * @throws Exception 
      */
     @Override
@@ -55,7 +56,7 @@ public class QuestionDAOImpl extends DBContext implements QuestionDAO{
                 Question question = new Question();
                 question.setId(rs.getInt("q_id"));
                 question.setContent(rs.getString("content"));
-                question.setDate_Create(rs.getDate("date_Create"));
+                question.setDateCreate(rs.getDate("date_Create"));
                 listQ.add(question);
             }
         } catch (Exception ex) {
@@ -69,15 +70,15 @@ public class QuestionDAOImpl extends DBContext implements QuestionDAO{
     }
 
     /**
-     * Get all questions in the database and paging
+     * Get all questions from <code>Question</code> table in database and paging
      * 
-     * @param currentPage. It is int number.
-     * @param numberQuesInPage. It is int number.
-     * @return a list <code>Question</code> object
+     * @param currentPage it is <code>int</code> number
+     * @param numberQuesInPage it is <code>int</code> number
+     * @return a list of <code>Question</code> object. It is a <code>java.util.List</code> object
      * @throws Exception 
      */
     @Override
-    public ArrayList<Question> getListQuestionsPadding(int currentPage, int numberQuesInPage) throws Exception {
+    public ArrayList<Question> getListQuestionsPaging(int currentPage, int numberQuesInPage) throws Exception {
         ArrayList listQ = new ArrayList();
         ResultSet rs = null;
         PreparedStatement statement = null;
@@ -98,7 +99,7 @@ public class QuestionDAOImpl extends DBContext implements QuestionDAO{
                 Question question = new Question();
                 question.setId(rs.getInt("q_id"));
                 question.setContent(rs.getString("content"));
-                question.setDate_Create(rs.getDate("date_Create"));
+                question.setDateCreate(rs.getDate("date_Create"));
                 listQ.add(question);
             }
         } catch (Exception ex) {
@@ -113,9 +114,9 @@ public class QuestionDAOImpl extends DBContext implements QuestionDAO{
     }
 
     /**
-     * Count the number of all questions in the database
+     * Get all the number of questions records in the database
      * 
-     * @return count number 
+     * @return count it is <code>int</code> number
      * @throws Exception 
      */
     @Override
@@ -144,10 +145,10 @@ public class QuestionDAOImpl extends DBContext implements QuestionDAO{
     }
 
     /**
-     * Get a question in the database by question id
+     * Get a record question from <code>Question</code> table by id in the database
      * 
-     * @param questionId. It is int number.
-     * @return a <code>Question</code> object
+     * @param questionId it is <code>int</code> number
+     * @return question it is a <code>Question</code> object
      * @throws Exception 
      */
     @Override
@@ -166,7 +167,7 @@ public class QuestionDAOImpl extends DBContext implements QuestionDAO{
                 Question question = new Question();
                 question.setId(rs.getInt("q_id"));
                 question.setContent(rs.getString("content"));
-                question.setDate_Create(rs.getDate("date_Create"));
+                question.setDateCreate(rs.getDate("date_Create"));
                 return question;
             }
         } catch (Exception ex) {
@@ -180,24 +181,24 @@ public class QuestionDAOImpl extends DBContext implements QuestionDAO{
     }
 
     /**
-     * Delete a question in the database by question id
+     * Delete a record question from <code>Question</code> table by id in the database
      * 
-     * @param q_id. It is int number.
+     * @param id it is <code>int</code> number
      * @throws Exception 
      */
     @Override
-    public void deleteQuestionById(int q_id) throws Exception {
+    public void deleteQuestionById(int id) throws Exception {
         OptionDAO doo = new OptionDAOImpl();
         ResultSet rs = null;
         PreparedStatement statement = null;
         Connection conn = null;
         try {
-            doo.deleteOption(q_id);
+            doo.deleteOption(id);
             String sql = "DELETE FROM [dbo].[Question]\n"
                     + "      WHERE q_id = ?";
             conn = getConnection();
             statement = conn.prepareStatement(sql);
-            statement.setInt(1, q_id);
+            statement.setInt(1, id);
             statement.executeUpdate();
         } catch (Exception ex) {
             Logger.getLogger(QuestionDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -210,13 +211,13 @@ public class QuestionDAOImpl extends DBContext implements QuestionDAO{
     }
 
     /**
-     * Add a new question to the database.
+     * Insert a new record question to <code>Question</code> table in the database
      * 
-     * @param q <code>Question</code> object
+     * @param question it is an <code>Question</code> object
      * @throws Exception 
      */
     @Override
-    public void addQuestion(Question q) throws Exception {
+    public void addQuestion(Question question) throws Exception {
         ResultSet rs = null;
         PreparedStatement statement = null;
         Connection conn = null;
@@ -229,8 +230,8 @@ public class QuestionDAOImpl extends DBContext implements QuestionDAO{
                     + "           ,?)";
             conn = getConnection();
             statement = conn.prepareStatement(sql);
-            statement.setString(1, q.getContent());
-            statement.setDate(2, q.getDate_Create());
+            statement.setString(1, question.getContent());
+            statement.setDate(2, question.getDateCreate());
             statement.executeUpdate();
         } catch (Exception ex) {
             throw ex;
@@ -242,9 +243,9 @@ public class QuestionDAOImpl extends DBContext implements QuestionDAO{
     }
 
     /**
-     * Returns the last identifier generated for question table
+     * Returns the last Question id generated from <code>Question</code> table in the database
      * 
-     * @return id number
+     * @return id it is <code>int</code> number
      * @throws Exception 
      */
     @Override

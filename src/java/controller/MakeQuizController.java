@@ -1,12 +1,11 @@
-/**
- * Copyright (C) 2021, FPT University
- * J3.L.P0001
- * Online Quiz.
+/*
+ * Copyright (C) 2021, FPT University<br>
+ * J3.L.P0001<br>
+ * Online Quiz<br>
  *
- * Record of change:
- * DATE         VERSION         Author
- * 2021-02-23   1.0             DungHT
- *
+ * Record of change:<br>
+ * DATE          Version    Author           DESCRIPTION<br>
+ * 2021-05-29    1.0        NangNN           First Version<br>
  */
 package controller;
 
@@ -25,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * This class extends from abstract class BaseAuthenticationController.
  * Processes: - Get the data of the question and check according to the
- * conditions in the function:
+ * conditions in the function
  *
  * Exception: - If on/output failed, it will return to error page.
  *
@@ -109,7 +108,7 @@ public class MakeQuizController extends BaseAuthenticationController {
                 QuestionDAO questionDAO = new QuestionDAOImpl();
                 Question question1 = new Question();
                 question1.setContent(question);
-                question1.setDate_Create(date);
+                question1.setDateCreate(date);
                 questionDAO.addQuestion(question1);
                 int questionId = questionDAO.getIdQuestion();
                 OptionDAO optionDAO = new OptionDAOImpl();

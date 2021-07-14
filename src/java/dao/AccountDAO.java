@@ -1,44 +1,44 @@
-/**
- * Copyright (C) 2021, FPT University
- * J3.L.P0001
- * Online Quiz.
+/*
+ * Copyright (C) 2021, FPT University<br>
+ * J3.L.P0001<br>
+ * Online Quiz<br>
  *
- * Record of change:
- * DATE         VERSION         Author
- * 2021-02-23   1.0             DungHT
- *
+ * Record of change:<br>
+ * DATE          Version    Author           DESCRIPTION<br>
+ * 2021-05-29    1.0        NangNN           First Version<br>
  */
 package dao;
 
 import entity.Account;
 
 /**
- * This class contains methods to help us manipulate Account objects in the database.
- * 
- * @author Dung
+ * The interface of <code>AccountDAOImpl</code> class defines methods to help us 
+ * manipulate <code>Account</code> object from <code>Account</code> tables in database.
+ *
+ * @author nangnnhe130538
  */
 public interface AccountDAO {
     /**
-     * Search and retrieve account data according to the username entered by the user
+     * Get a record account from <code>Account</code> table by username in the database
      * 
-     * @param user. It is a <code>java.lang.String</code>
-     * @return a <code>Account</code> object
+     * @param userName it is a <code>java.lang.String</code>
+     * @return account it is an <code>Option</code> object
      * @throws Exception 
      */
-    public Account getAccountByUser(String user) throws Exception;
+    public Account getAccountByUser(String userName) throws Exception;
     /**
-     * Check to see if the email address when registered user already exists in the database
+     * Check the email address when user registered already exists in the database
      * 
-     * @param email. It is a <code>java.lang.String</code>
-     * @return boolean
+     * @param email it is a <code>java.lang.String</code>
+     * @return true/false it is a <code>boolean</code>
      * @throws Exception 
      */
     public boolean checkEmail(String email) throws Exception;
     /**
-     * Add a new user account to the database
+     * Insert a new record account to <code>Account</code> table in the database
      * 
-     * @param a. It is a Account
+     * @param account it is an <code>Option</code> object
      * @throws Exception 
      */
-    public void addAcount(Account a) throws Exception;
+    public void addAcount(Account account) throws Exception;
 }

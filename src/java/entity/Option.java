@@ -1,52 +1,52 @@
-/**
- * Copyright (C) 2021, FPT University
- * J3.L.P0001
- * Online Quiz.
+/*
+ * Copyright (C) 2021, FPT University<br>
+ * J3.L.P0001<br>
+ * Online Quiz<br>
  *
- * Record of change:
- * DATE         VERSION         Author
- * 2021-02-23   1.0             DungHT
- *
+ * Record of change:<br>
+ * DATE          Version    Author           DESCRIPTION<br>
+ * 2021-05-29    1.0        NangNN           First Version<br>
  */
 package entity;
 
 /**
- * This class represents the Option table in Database
+ * This class uses to contain attributes and methods getter, setter of <code>Option</code> object
+ * This class represents the <code>Option</code> table in database
  *
- * @author Dung
+ * @author nangnnhe130538
  */
 public class Option {
 
     /**
-     * Option id
+     * <code>Option</code> id
      */
     private int id;
     /**
-     * Option content
+     * <code>Option</code> content
      */
     private String content;
     /**
-     * entity Question
+     * <code>Option</code> question
      */
     private Question question;
     /**
-     * Option status
+     * <code>Option</code> status
      */
     private boolean status;
 
     /**
-     * Constructor
+     * Constructor with no parameter
      */
     public Option() {
     }
 
     /**
-     * Constructor
+     * Constructor with parameter
      *
-     * @param id
-     * @param content
-     * @param question
-     * @param status
+     * @param id it is an <code>int</code>
+     * @param content it is a <code>java.lang.String</code>
+     * @param question it is an <code>entity.Question</code> object
+     * @param status it is a <code>boolean</code>
      */
     public Option(int id, String content, Question question, boolean status) {
         this.id = id;
@@ -56,71 +56,72 @@ public class Option {
     }
 
     /**
-     * Get id from the Option object
+     * Get value from id attribute of <code>Option</code> class. <br>
      *
-     * @return id
+     * @return id it is an <code>int</code>
      */
     public int getId() {
         return id;
     }
 
     /**
-     * Set id to the Option object
+     * Set value to id attribute of <code>Option</code> class
      *
-     * @param id
+     * @param id it is an <code>int</code>
      */
     public void setId(int id) {
         this.id = id;
     }
 
     /**
-     * Get Content from the Option object
+     * Get value from content attribute of <code>Option</code> class. <br>
      *
-     * @return Content
+     * @return content it is a <code>java.lang.String</code>
      */
     public String getContent() {
         return content;
     }
 
     /**
-     * Set content to the Option object
+     * Set value to content attribute of <code>Option</code> class
      *
-     * @param content
+     * @param content it is a <code>java.lang.String</code>
      */
     public void setContent(String content) {
         this.content = content;
     }
 
     /**
-     * Get Question from the Option object
+     * Get value from question attribute of <code>Option</code> class. <br>
      *
-     * @return Question
+     * @return question it is an <code>entity.Question</code> object
      */
     public Question getQuestion() {
         return question;
     }
 
     /**
-     * Set Question to the Option object
+     * Set value to question attribute of <code>Option</code> class
      *
-     * @param question
+     * @param question it is an <code>entity.Question</code> object
      */
     public void setQuestion(Question question) {
         this.question = question;
     }
 
     /**
-     * Get status from the Option object
-     * 
-     * @return status
+     * Get value from status attribute of <code>Option</code> class. <br>
+     *
+     * @return status it is a <code>boolean</code>
      */
     public boolean isStatus() {
         return status;
     }
 
     /**
-     * Set status to the Option object
-     * @param status
+     * Set value to status attribute of <code>Option</code> class
+     *
+     * @param status it is a <code>boolean</code> 
      */
     public void setStatus(boolean status) {
         this.status = status;

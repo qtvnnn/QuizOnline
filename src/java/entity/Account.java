@@ -1,46 +1,52 @@
-/**
- * Copyright (C) 2021, FPT University
- * J3.L.P0001
- * Online Quiz.
+/*
+ * Copyright (C) 2021, FPT University<br>
+ * J3.L.P0001<br>
+ * Online Quiz<br>
  *
- * Record of change:
- * DATE         VERSION         Author
- * 2021-02-23   1.0             DungHT
- *
+ * Record of change:<br>
+ * DATE          Version    Author           DESCRIPTION<br>
+ * 2021-05-29    1.0        NangNN           First Version<br>
  */
 package entity;
 
 /**
- * This class represents the Account table in Database
+ * This class uses to contain attributes and methods getter, setter of <code>Account</code> object
+ * This class represents the <code>Account</code> table in database
  *
- * @author Dung
+ * @author nangnnhe130538
  */
 public class Account {
 
     /**
-     * Account username
+     * <code>Account</code> userName
      */
     private String userName;
     /**
-     * Account password
+     * <code>Account</code> password
      */
     private String password;
     /**
-     * entity UserType
+     * <code>Account</code> userType
      */
     private UserType userType;
     /**
-     * Account email;
+     * <code>Account</code> email
      */
     private String email;
+    
+    /**
+     * Constructor with no parameter
+     */
+    public Account() {
+    }
 
     /**
-     * Constructor
+     * Constructor with parameter
      *
-     * @param userName
-     * @param password
-     * @param userType
-     * @param email
+     * @param userName it is a <code>java.lang.String</code>
+     * @param password it is a <code>java.lang.String</code>
+     * @param userType it is an <code>entity.UserType</code> object
+     * @param email it is a <code>java.lang.String</code>
      */
     public Account(String userName, String password, UserType userType, String email) {
         this.userName = userName;
@@ -50,81 +56,75 @@ public class Account {
     }
 
     /**
-     * Constructor
-     */
-    public Account() {
-    }
-
-    /**
-     * Get Username from the Account object
+     * Get value from userName attribute of <code>Account</code> class. <br>
      *
-     * @return Username
+     * @return userName it is a <code>java.lang.String</code>
      */
     public String getUserName() {
         return userName;
     }
 
     /**
-     * Set Username to the Account object
+     * Set value to userName attribute of <code>Option</code> class
      *
-     * @param userName
+     * @param userName it is a <code>java.lang.String</code>
      */
     public void setUserName(String userName) {
         this.userName = userName;
     }
 
     /**
-     * Get Password from the Account object
+     * Get value from password attribute of <code>Account</code> class. <br>
      *
-     * @return Password
+     * @return password it is a <code>java.lang.String</code>
      */
     public String getPassword() {
         return password;
     }
 
     /**
-     * Set Password to the Account object
+     * Set value to password attribute of <code>Option</code> class
      *
-     * @param password
+     * @param password it is a <code>java.lang.String</code>
      */
     public void setPassword(String password) {
         this.password = password;
     }
 
     /**
-     * Get UserType from the Account object
+     * Get value from userType attribute of <code>Account</code> class. <br>
      *
-     * @return userType
+     * @return userType it is a <code>entity.UserType</code>
      */
     public UserType getUserType() {
         return userType;
     }
 
     /**
-     * Set UserType to the Account object
+     * Set value to userType attribute of <code>Option</code> class
      *
-     * @param userType
+     * @param userType it is a <code>entity.UserType</code>
      */
     public void setUserType(UserType userType) {
         this.userType = userType;
     }
 
     /**
-     * Get email from the Account object
+     * Get value from email attribute of <code>Account</code> class. <br>
      *
-     * @return email
+     * @return email it is a <code>java.lang.String</code>
      */
     public String getEmail() {
         return email;
     }
 
     /**
-     * Set email to the Account object
+     * Set value to email attribute of <code>Option</code> class
      *
-     * @param Email
+     * @param email it is a <code>java.lang.String</code>
      */
-    public void setEmail(String Email) {
-        this.email = Email;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
 }

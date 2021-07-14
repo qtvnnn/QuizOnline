@@ -1,7 +1,13 @@
 <%-- 
-    Document   : takeQuiz3
-    Created on : Mar 15, 2020, 7:50:42 PM
-    Author     : tranb
+/*
+ * Copyright (C) 2021, FPT University<br>
+ * J3.L.P0001<br>
+ * Online Quiz<br>
+ *
+ * Record of change:<br>
+ * DATE          Version    Author           DESCRIPTION<br>
+ * 2021-05-29    1.0        NangNN           First Version<br>
+ */
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

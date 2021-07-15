@@ -62,7 +62,7 @@ public class TakeQuiz2Controller extends HttpServlet {
             int number = Integer.parseInt(request.getParameter("number"));
             long timeSubmit = System.currentTimeMillis();
             long timeStart = (long) session.getAttribute("time");
-            if (timeSubmit - (number * 5 * 1000 + 800) <= timeStart) {
+            if (timeSubmit - (number * 8 * 1000 + 800) <= timeStart) {
                 int count = 0;
                 int[] arrN = new int[number];
                 arrN = (int[]) session.getAttribute("arrN");
@@ -70,19 +70,15 @@ public class TakeQuiz2Controller extends HttpServlet {
                 for (int i = 0; i < arrN.length; i++) {
                     boolean flaq = true;
                     ArrayList<Option> listOptions = optionDAO.getListOptions(arrN[i]);
-                    //get question in bank with number of user
                     for (int j = 0; j < listOptions.size(); j++) {
                         String takeO = request.getParameter(listOptions.get(j).getId() + "");
-                        //get option of question to compare with answer of user
                         boolean check;
                         if (takeO == null) {
-                            //user no choose answer
                             check = false;
                         } else {
                             check = true;
                         }
                         if (!listOptions.get(j).isStatus() == check) {
-                            //compare answers
                             flaq = false;
                         }
                     }
@@ -102,10 +98,8 @@ public class TakeQuiz2Controller extends HttpServlet {
                     checkPass = "Not Passed";
                     color = "red";
                 }
-                //result of user
                 String fomatScore = String.format("%.1f", (float) count / number * 10);
                 String yourScore = fomatScore + " (" + percent + "%) - " + checkPass;
-                //format result and send to web
                 request.setAttribute("yourScore", yourScore);
                 request.setAttribute("color", color);
                 request.getRequestDispatcher("takeQuiz3.jsp").forward(request, response);

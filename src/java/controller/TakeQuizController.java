@@ -54,7 +54,7 @@ public class TakeQuizController extends BaseAuthenticationController {
 
             //get number user input
             QuestionDAO questionDAO = new QuestionDAOImpl();
-            ArrayList<Question> listQ = questionDAO.getListQuestionsTop(number);
+            ArrayList<Question> listQ = questionDAO.getListQuestionsTop(number); //random
             //check number question in bank and compare with number question user input 
             int countQ = questionDAO.countQuestion();
             if (number > countQ) {

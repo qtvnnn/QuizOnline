@@ -45,7 +45,7 @@
                     <tr>
                         <td class="text-color"><%= listQ.get(i).getContent()%></td>
 
-                        <td class="text-color"><%= df.format(listQ.get(i).getDate_Create())%></td>
+                        <td class="text-color"><%= df.format(listQ.get(i).getDateCreate())%></td>
                         <td> <form onsubmit="return confirm('Are you really want to delete this question?')"  action="manager" method="post">
                                 <button type="submit" name="delete" value="<%= listQ.get(i).getId()%>">Delete</button>
                             </form>

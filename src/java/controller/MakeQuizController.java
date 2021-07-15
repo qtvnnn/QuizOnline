@@ -128,7 +128,7 @@ public class MakeQuizController extends BaseAuthenticationController {
                     optionDAO.addOption(options);
                 }
                 //redirect to managerpage
-                request.getRequestDispatcher("manager").forward(request, response);
+                response.sendRedirect("manager");
             }
         } catch (Exception e) {
             request.getRequestDispatcher("error.jsp").forward(request, response);

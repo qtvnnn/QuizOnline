@@ -34,11 +34,11 @@ public class LogoutController extends BaseAuthenticationController {
     }// </editor-fold>
 
     /**
-     * Uses <code>invalidate()</code> method to cancel all saved sessions. then redirects 
+     * Uses <code>invalidate()</code> method to cancel all saved sessions, then redirects 
      * the user to the <code>login.jsp</code> page.
      * 
-     * @param req it is a object of <code>javax.servlet.http.HttpServletRequest</code>
-     * @param resp it is a object of <code>javax.servlet.http.HttpServletResponse</code>
+     * @param req it is an object of <code>javax.servlet.http.HttpServletRequest</code>
+     * @param resp it is an object of <code>javax.servlet.http.HttpServletResponse</code>
      * @throws ServletException
      * @throws IOException 
      */

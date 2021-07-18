@@ -19,14 +19,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Check login status and verify user permissions
  *
- * @author Dung
+ * @author nangnnhe130538
  */
 public abstract class BaseAuthenticationController extends HttpServlet {
 
     /**
      * Check login status
      *
-     * @param req. It is <code>javax.servlet.http.HttpServletRequest</code>
+     * @param req it is an object of <code>javax.servlet.http.HttpServletRequest</code>
      * @return boolean
      */
     private boolean checkLogin(HttpServletRequest req) {
@@ -37,8 +37,8 @@ public abstract class BaseAuthenticationController extends HttpServlet {
     /**
      * Check permissions and which pages the user has permission to use
      *
-     * @param req. It is <code>javax.servlet.http.HttpServletRequest</code>
-     * @param resp. It is <code>javax.servlet.http.HttpServletResponse</code>
+     * @param req it is an object of <code>javax.servlet.http.HttpServletRequest</code>
+     * @param resp it is an object of <code>javax.servlet.http.HttpServletResponse</code>
      * @throws ServletException
      * @throws IOException
      */
@@ -58,8 +58,8 @@ public abstract class BaseAuthenticationController extends HttpServlet {
 
     /**
      *
-     * @param req. It is <code>javax.servlet.http.HttpServletRequest</code>
-     * @param resp. It is <code>javax.servlet.http.HttpServletResponse</code>
+     * @param req it is an object of <code>javax.servlet.http.HttpServletRequest</code>
+     * @param resp it is an object of <code>javax.servlet.http.HttpServletResponse</code>
      * @throws ServletException
      * @throws IOException
      */

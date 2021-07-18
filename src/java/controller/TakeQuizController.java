@@ -17,6 +17,8 @@ import dao.impl.OptionDAOImpl;
 import dao.impl.QuestionDAOImpl;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,11 +26,9 @@ import javax.servlet.http.HttpSession;
 
 /**
  * This class extends from abstract class BaseAuthenticationController.
- * 
- * Processes: - Get randomly questions according to the number of questions
- * asked by the user.
- *
- * Exception: - If on/output failed, it will return to error page.
+ * This class uses functions in <code>QuestionDAO</code> to get a list of random questions 
+ * and <code>OptionDAO</code> to get a list of option of those questions.
+ * Then redirects the user to the <code>takeQuiz2.jsp</code> page.
  *
  * @author nangnnhe130538
  */
@@ -36,9 +36,12 @@ public class TakeQuizController extends BaseAuthenticationController {
 
     /**
      * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request. It is <code>javax.servlet.http.HttpServletRequest</code>
-     * @param response. It is <code>javax.servlet.http.HttpServletResponse</code>
+     * Use <code>getListQuestionsTop</code> function in <code>QuestionDAO</code> class to get list of random question.
+     * Use <code>getListOptionsByQuestionId</code> function in <code>OptionDAO</code>to get a list of option of 
+     * those questions by question ID.
+     * 
+     * @param request it is an object of <code>javax.servlet.http.HttpServletRequest</code>
+     * @param response it is an object of <code>javax.servlet.http.HttpServletResponse</code>
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
@@ -78,6 +81,8 @@ public class TakeQuizController extends BaseAuthenticationController {
                 request.getRequestDispatcher("takeQuiz2.jsp").forward(request, response);
             }
         } catch (Exception e) {
+            Logger.getLogger(TakeQuizController.class.getName()).log(Level.SEVERE, null, e);
+            request.setAttribute("errorMessage", e.toString());
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
     }
@@ -93,9 +98,10 @@ public class TakeQuizController extends BaseAuthenticationController {
     }// </editor-fold>
 
     /**
+     * Redirects the user to the <code>takeQuiz.jsp</code> page.
      * 
-     * @param req. It is <code>javax.servlet.http.HttpServletRequest</code>
-     * @param resp. It is <code>javax.servlet.http.HttpServletResponse</code>
+     * @param req it is an object of <code>javax.servlet.http.HttpServletRequest</code>
+     * @param resp it is an object of <code>javax.servlet.http.HttpServletResponse</code>
      * @throws ServletException
      * @throws IOException 
      */

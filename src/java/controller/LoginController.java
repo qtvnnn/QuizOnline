@@ -13,6 +13,8 @@ import dao.AccountDAO;
 import dao.impl.AccountDAOImpl;
 import entity.Account;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,9 +22,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * This class uses function in <code>DigitalDAO</code> to get username input and compare it with 
- * username data in the database to perform login
- * Login success redirects to <code>HomeController</code>
+ * This class uses functions in <code>DigitalDAO</code> to get username input and compare it with 
+ * username data in the database to perform login.
+ * Login success redirects to <code>HomeController</code> controller.
  *
  * @author nangnnhe130538
  */
@@ -47,8 +49,9 @@ public class LoginController extends HttpServlet {
      * Handles the HTTP <code>POST</code> method.
      * Use <code>getAccountByUser</code> function in <code>AccountDAO</code> class to compare username input
      * with username data in the database to perform login
-     * Login success redirects to <code>HomeController</code>
-     *
+     * Login success redirects to <code>HomeController</code> controller.
+ 
+    *
      * @param request it is a object of <code>javax.servlet.http.HttpServletRequest</code>
      * @param response it is a object of <code>javax.servlet.http.HttpServletResponse</code>
      * @throws ServletException if account servlet-specific error occurs
@@ -79,6 +82,8 @@ public class LoginController extends HttpServlet {
                 }
             }
         } catch (Exception e) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, e);
+            request.setAttribute("errorMessage", e.toString());
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
 

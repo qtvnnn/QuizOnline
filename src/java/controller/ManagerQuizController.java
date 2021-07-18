@@ -17,6 +17,8 @@ import dao.impl.QuestionDAOImpl;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,21 +26,24 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * This class extends from abstract class BaseAuthenticationController.
- * Processes: - Get a list of all questions in the database and paging the
- * question list.
+ * This class uses functions in <code>QuestionDAO</code> to get the list of questions, delete a question by Id
+ * and <code>OptionDAO</code> to delete the options of the question you want to delete.
+ * Then redirects the user to the <code>managerQuiz.jsp</code> page.
  *
- * Exception: - If on/output failed, it will return to error page.
- *
- * @author Dung
+ * @author nangnnhe130538
  */
 @WebServlet(name = "managerQuizController", urlPatterns = {"/manager"})
 public class ManagerQuizController extends BaseAuthenticationController {
 
     /**
      * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request. It is <code>javax.servlet.http.HttpServletRequest</code>
-     * @param response servlet response. It is <code>javax.servlet.http.HttpServletResponse</code>
+     * Use <code>deleteOption</code> function in <code>OptionDAO</code> class to delete the options of the 
+     * question you want to delete by question ID.
+     * Use <code>deleteQuestionById</code> function in <code>QuestionDAO</code> class to delete a question 
+     * by question ID.
+     * 
+     * @param request it is an object of <code>javax.servlet.http.HttpServletRequest</code>
+     * @param response it is an object of <code>javax.servlet.http.HttpServletResponse</code>
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
@@ -69,7 +74,9 @@ public class ManagerQuizController extends BaseAuthenticationController {
             response.sendRedirect("./manager?id=" + page);
 
         } catch (Exception e) {
-            response.sendRedirect("error.jsp");
+            Logger.getLogger(ManagerQuizController.class.getName()).log(Level.SEVERE, null, e);
+            request.setAttribute("errorMessage", e.toString());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
         }
     }
 
@@ -84,9 +91,12 @@ public class ManagerQuizController extends BaseAuthenticationController {
     }// </editor-fold>
 
     /**
+     * Use <code>getListQuestionsPaging</code> function in <code>QuestionDAO</code> class to get list 
+     * all of question in the database.     * 
+     * Then forward them to the page <code>managerQuiz.jsp</code>.
      * 
-     * @param req. It is <code>javax.servlet.http.HttpServletRequest</code>
-     * @param resp. It is <code>javax.servlet.http.HttpServletResponse</code>
+     * @param req it is an object of <code>javax.servlet.http.HttpServletRequest</code>
+     * @param resp it is an object of <code>javax.servlet.http.HttpServletResponse</code>
      * @throws ServletException
      * @throws IOException 
      */
@@ -113,6 +123,8 @@ public class ManagerQuizController extends BaseAuthenticationController {
             req.getRequestDispatcher("managerQuiz.jsp").forward(req, resp);
 
         } catch (Exception e) {
+            Logger.getLogger(ManagerQuizController.class.getName()).log(Level.SEVERE, null, e);
+            req.setAttribute("errorMessage", e.toString());
             req.getRequestDispatcher("error.jsp").forward(req, resp);
         }
     }

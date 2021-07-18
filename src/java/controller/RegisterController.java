@@ -16,6 +16,8 @@ import dao.UserTypeDAO;
 import dao.impl.AccountDAOImpl;
 import dao.impl.UserTypeDAOImpl;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,22 +25,19 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * This class extends from abstract class BaseAuthenticationController.
+ * This class uses functions in <code>AccountDAO</code> to create account for user
+ * Create Account success redirects to <code>login</code> controller.
  *
- * Processes: - Get username input and compare it with username data in the
- * database to make the registration.
- *
- * Exception: - If on/output failed, it will return to error page.
- *
- * @author Dung
+ * @author nangnnhe130538
  */
 public class RegisterController extends HttpServlet {
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request. It is <code>javax.servlet.http.HttpServletRequest</code>
-     * @param response servlet response. It is <code>javax.servlet.http.HttpServletResponse</code>
+     * Redirects the user to the <code>registration.jsp</code> page.
+     * 
+     * @param request it is an object of <code>javax.servlet.http.HttpServletRequest</code>
+     * @param response it is an object of <code>javax.servlet.http.HttpServletResponse</code>
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
@@ -49,11 +48,12 @@ public class RegisterController extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method. get information to create an
-     * account for the username
+     * Handles the HTTP <code>POST</code> method. 
+     * Use <code>getAccountByUser</code> function in <code>AccountDAO</code> class to create a account for user.
+     * Register success redirects to <code>login</code> controller.
      *
-     * @param request servlet request. It is <code>javax.servlet.http.HttpServletRequest</code>
-     * @param response servlet response. It is <code>javax.servlet.http.HttpServletResponse</code>
+     * @param request it is an object of <code>javax.servlet.http.HttpServletRequest</code>
+     * @param response it is an object of <code>javax.servlet.http.HttpServletResponse</code>
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
@@ -107,6 +107,8 @@ public class RegisterController extends HttpServlet {
                 request.getRequestDispatcher("login").forward(request, response);
             }
         } catch (Exception e) {
+            Logger.getLogger(RegisterController.class.getName()).log(Level.SEVERE, null, e);
+            request.setAttribute("errorMessage", e.toString());
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
 

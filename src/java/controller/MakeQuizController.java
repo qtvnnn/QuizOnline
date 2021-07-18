@@ -17,27 +17,31 @@ import dao.impl.OptionDAOImpl;
 import dao.impl.QuestionDAOImpl;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  * This class extends from abstract class BaseAuthenticationController.
- * Processes: - Get the data of the question and check according to the
- * conditions in the function
+ * This class uses functions in <code>QuestionDAO</code> and <code>OptionDAO</code> to create question
+ * and list options of this question.
+ * Create Quiz success redirects to <code>manager</code> controller.
  *
- * Exception: - If on/output failed, it will return to error page.
- *
- * @author Dung
+ * @author nangnnhe130538
  */
 public class MakeQuizController extends BaseAuthenticationController {
 
     /**
-     * Handles the HTTP <code>POST</code> method. Get the data the user enters
-     * to create a question and add options to the question
-     *
-     * @param request servlet request. It is <code>javax.servlet.http.HttpServletRequest</code>
-     * @param response servlet response. It is <code>javax.servlet.http.HttpServletResponse</code>
+     * Handles the HTTP <code>POST</code> method. 
+     * Use <code>addQuestion</code> function in <code>QuestionDAO</code> class to create a question from user input data.
+     * Use <code>addOption</code> function in <code>OptionDAO</code> class to create list option of this question
+     * from user input data.
+     * Create Quiz success redirects to <code>manager</code> controller.
+     * 
+     * @param request it is an object of <code>javax.servlet.http.HttpServletRequest</code>
+     * @param response it is an object of <code>javax.servlet.http.HttpServletResponse</code>
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
@@ -131,6 +135,8 @@ public class MakeQuizController extends BaseAuthenticationController {
                 response.sendRedirect("manager");
             }
         } catch (Exception e) {
+            Logger.getLogger(MakeQuizController.class.getName()).log(Level.SEVERE, null, e);
+            request.setAttribute("errorMessage", e.toString());
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
 
@@ -147,10 +153,10 @@ public class MakeQuizController extends BaseAuthenticationController {
     }// </editor-fold>
 
     /**
-     * Redirect to the make quiz page
+     * Redirects the user to the <code>makeQuiz.jsp</code> page.
      *
-     * @param req. It is <code>javax.servlet.http.HttpServletRequest</code>
-     * @param resp. It is <code>javax.servlet.http.HttpServletResponse</code>
+     * @param req it is an object of <code>javax.servlet.http.HttpServletRequest</code>
+     * @param resp it is an object of <code>javax.servlet.http.HttpServletResponse</code>
      * @throws ServletException
      * @throws IOException
      */

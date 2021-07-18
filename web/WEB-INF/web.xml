@@ -61,4 +61,29 @@
             30
         </session-timeout>
     </session-config>
+    <env-entry>
+        <env-entry-name>serverName</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>localhost</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>portNumber</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>1433</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>dbName</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>onlineQuiz</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>username</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>sa</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>password</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>123</env-entry-value>
+    </env-entry>
 </web-app>

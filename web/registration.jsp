@@ -9,8 +9,7 @@
  * 2021-05-29    1.0        NangNN           First Version<br>
  */
 --%>
-
-<%@page import="entity.Account"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,21 +18,17 @@
         <title>JSP Page</title>
         <link href="./CSS/css1.css" rel="stylesheet">
         <link href="./CSS/registerCss.css" rel="stylesheet">
-        <%
-            Account account  = (Account) request.getAttribute("accountFail");
-            String notification = (String) request.getAttribute("notification");
-        %>
     </head>
     <body>
 
         <div class="tong">
-            <jsp:include page="header.jsp"/>
+            <%@include file="header.jsp"%>
             <div class="login" >
                 <h3 class="header font-wight">Registration Form</h3>
                 <form id="register" action="register" method="post">
                     <div>
                         <label for="user" class="text-color">User Name: </label>
-                        <input type="text" id="user" required="" name="user" <%if (account != null) {%> value="<%= account.getUserName()%>" <%}%> class="form-user color-textbox" >   
+                        <input type="text" id="user" required="" name="user" value="${accountFail != null ? accountFail.getUserName() : ''}" class="form-user color-textbox" >   
                     </div>
 
                     <div>
@@ -45,22 +40,22 @@
                         <label for="type" class="text-color">User Type:</label>
                         <select id="type" class="cbxtype" name="type">
                             <option value="2">Teacher</option>
-                            <option value="1" <%if (account!= null && account.getUserType().getId()== 1) {%> selected="" <%}%> >Student</option>
+                            <option value="1" <c:if test="${accountFail != null && accountFail.getUserType().getId() == 1}">selected=""</c:if> >Student</option>
                         </select>
                     </div>
 
                     <div>
                         <label class="text-color" for="email">Email: </label>
-                        <input type="email" id="email" required="" name="email" <%if (account != null) {%> value="<%=account.getEmail()%>" <%}%>  class="form-email color-textbox">
+                        <input type="email" id="email" required="" name="email" value="${accountFail != null ? accountFail.getEmail() : ''}" class="form-email color-textbox">
                     </div>
 
                     <div>
                         <input type="button" onclick="checkRegis()" class="button"  value="Register">
                     </div>
                 </form>
-                <%if (notification != null) {%>
-                <a><%= notification%></a>
-                <%}%>
+                <c:if test="${notification != null}">
+                    <a>${notification}</a>
+                </c:if>
             </div>
             <script>
                 function hasWhiteSpace(s)
@@ -73,7 +68,7 @@
                     if (hasWhiteSpace(username)) {
                         alert('Username can not have space');
                     }
-                    else{
+                    else {
                         document.getElementById("register").submit();
                     }
                 }

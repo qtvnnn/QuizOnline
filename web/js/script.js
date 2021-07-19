@@ -21,7 +21,7 @@ function setNumber(n) {
     this.timeDisplay = document.getElementById("timeDisplay");
     this.currentQuiz = 0;
     this.currentDiv = null;
-    this.timeRemaining = number * 5;
+    this.timeRemaining = number * 10;
 }
 
 function nextQuestion() {

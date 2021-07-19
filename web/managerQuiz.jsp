@@ -9,10 +9,9 @@
  * 2021-05-29    1.0        NangNN           First Version<br>
  */
 --%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="entity.Account"%>
-<%@page import="entity.Question"%>
-<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,41 +21,37 @@
 
         <link href="CSS/css1.css" rel="stylesheet" type="text/css"/>
         <link href="CSS/managerCss.css" rel="stylesheet" type="text/css"/>
-        <% int count = (Integer) request.getAttribute("count"); %>
-        <% ArrayList<Question> listQ = (ArrayList<Question>) request.getAttribute("listQ");%>
-        <%int pagecount = (Integer) request.getAttribute("pagecount"); %>
-        <% SimpleDateFormat df = (SimpleDateFormat) request.getAttribute("df");%>
 
         <script src="js/script.js" type="text/javascript"></script>
 
     </head>
     <body>
         <div class="tong">
-            <jsp:include page="header.jsp"/>
+            <%@include file="header.jsp"%>
+
             <div class="login">
-                <a class="text-color">Number of questions : <%= count%> </a>
+                <a class="text-color">Number of questions : ${count}</a>
                 <table>
                     <tr>
                         <th class="color-user">Question</th>
                         <th class="color-user">DateCreated</th> 
                         <th class="color-user">Delete</th>
                     </tr>
-                    <% for (int i = 0; i < listQ.size(); i++) {%>
-                    <tr>
-                        <td class="text-color"><%= listQ.get(i).getContent()%></td>
-
-                        <td class="text-color"><%= df.format(listQ.get(i).getDateCreate())%></td>
-                        <td> <form onsubmit="return confirm('Are you really want to delete this question?')"  action="manager" method="post">
-                                <button type="submit" name="delete" value="<%= listQ.get(i).getId()%>">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                    <%}%>
+                    <c:forEach begin="0" end="${listQ.size()}" var="i" items="${listQ}">
+                        <tr>
+                            <td class="text-color">${i.getContent()}</td>
+                            <td class="text-color">${df.format(i.getDateCreate())}</td>
+                            <td> <form onsubmit="return confirm('Are you really want to delete this question?')"  action="manager" method="post">
+                                    <button type="submit" name="delete" value="${i.getId()}">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </c:forEach>
                 </table>
                 <span class="padding">
-                    <%for (int i = 1; i <= pagecount; i++) {%>
-                    <a href="./manager?id=<%=i%>" type="link"><%=i%></a>
-                    <% }%>
+                    <c:forEach begin="1" end="${pagecount}" var="i">
+                        <a href="./manager?id=${i}" type="link">${i}</a>
+                    </c:forEach>
                 </span>
             </div>
         </div>

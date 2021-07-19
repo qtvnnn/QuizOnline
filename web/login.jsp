@@ -19,12 +19,11 @@
         <title>JSP Page</title>
         <link href="./CSS/css1.css" rel="stylesheet">
         <link href="./CSS/registerCss.css" rel="stylesheet">
-        <%String notification = (String) request.getAttribute("notification"); %>
     </head>
 
     <body>
         <div class="tong" >
-            <jsp:include page="header.jsp"/>
+            <%@include file="header.jsp"%>
 
             <div class="login">
                 <h3 class="font-wight">Login Form</h3>
@@ -41,9 +40,9 @@
                         <button type="submit" class="button">Sign in</button>
                         <a href="register" class="link-href text-color"><b>Register</b></a>
                     </div>
-                    <%if (notification != null) {%>
-                    <a><%= notification%></a>
-                    <%}%>
+                    <c:if test="${notification != null}">
+                        <a>${notification}</a>
+                    </c:if>
                 </form>
             </div>
         </div>

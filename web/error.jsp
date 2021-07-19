@@ -9,7 +9,7 @@
  * 2021-05-29    1.0        NangNN           First Version<br>
  */
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,9 +22,9 @@
 
     <body>
         <div class="tong" >
-            <jsp:include page="header.jsp"/>
+            <%@include file="header.jsp"%>
             <div class="login">
-                <a class="text-color">Oops ! Something went wrong &nbsp</a>
+                <a class="text-color">${errorMessage}</a>
                 <a href="login" class="click">Click here</a>
                 <a class="text-color">&nbsp     to go homepage</a>
             </div>

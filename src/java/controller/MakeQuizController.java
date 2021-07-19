@@ -48,6 +48,7 @@ public class MakeQuizController extends BaseAuthenticationController {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         try {
             // get time current from laptop
             long millis = System.currentTimeMillis();

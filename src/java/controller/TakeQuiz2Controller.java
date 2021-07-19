@@ -68,7 +68,7 @@ public class TakeQuiz2Controller extends HttpServlet {
             int number = Integer.parseInt(request.getParameter("number"));
             long timeSubmit = System.currentTimeMillis();
             long timeStart = (long) session.getAttribute("time");
-            if (timeSubmit - (number * 8 * 1000 + 800) <= timeStart) {
+            if (timeSubmit - (number * 10 * 1000 + 800) <= timeStart) {
                 int count = 0;
                 int[] arrN = new int[number];
                 arrN = (int[]) session.getAttribute("arrN");

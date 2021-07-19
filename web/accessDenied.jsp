@@ -20,7 +20,8 @@
     </head>
     <body>
         <div class="tong">
-            <jsp:include page="header.jsp"/>
+            <%@include file="header.jsp"%>
+
             <br/><br/>
 
             <h3 style="color:red;">Access Denied!</h3>

@@ -25,7 +25,7 @@
             <%@include file="header.jsp"%>
             <div class="login">
                 <a class="text-color">${errorMessage}</a>
-                <a href="login" class="click">Click here</a>
+                <a href="HomeController" class="click">Click here</a>
                 <a class="text-color">&nbsp     to go homepage</a>
             </div>
         </div>>

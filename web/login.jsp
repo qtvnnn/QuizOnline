@@ -30,11 +30,11 @@
                 <form action="login" method="post">
                     <div>
                         <label for="user" class="text-color">User Name: </label>
-                        <input type="text" id="user" required="" name="user" class="form-user color-textbox" >   
+                        <input type="text" id="user" required="" name="user" class="form-user color-textbox" maxlength="20">   
                     </div>
                     <div>
                         <label for="pass" class="text-color">Password: </label>
-                        <input type="password" required="" id="pass" name="pass" class="form-pass color-textbox" >   
+                        <input type="password" required="" id="pass" name="pass" class="form-pass color-textbox" maxlength="20">   
                     </div>
                     <div>
                         <button type="submit" class="button">Sign in</button>

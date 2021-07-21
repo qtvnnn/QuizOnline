@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
 /**
  * This class uses functions in <code>OptionDAO</code> to check the correct answer of the question
  * and uses Session to calculate the test end time.
- * Then redirects the user to the <code>takeQuiz3.jsp</code> page to calculate score and show user's test results.
+ * Then redirects the user to the <code>resultQuiz.jsp</code> page to calculate score and show user's test results.
  *
  * @author nangnnhe130538
  */
@@ -53,7 +53,7 @@ public class TestQuizController extends HttpServlet {
      * Use <code>getListOptions</code> function in <code>OptionDAO</code> class to get list options of question 
      * and check status of this option. True is correct, false is not correct.
      * Use <code>HttpSession</code> to get time start to calculate the test end time, then calculate score
-     * Then forward them to the page <code>takeQuiz3.jsp</code> to show user's test results.
+     * Then forward them to the page <code>resultQuiz.jsp</code> to show user's test results.
      * 
      * @param request it is an object of <code>javax.servlet.http.HttpServletRequest</code>
      * @param response it is an object of <code>javax.servlet.http.HttpServletResponse</code>
@@ -108,10 +108,10 @@ public class TestQuizController extends HttpServlet {
                 String yourScore = fomatScore + " (" + percent + "%) - " + checkPass;
                 request.setAttribute("yourScore", yourScore);
                 request.setAttribute("color", color);
-                request.getRequestDispatcher("takeQuiz3.jsp").forward(request, response);
+                request.getRequestDispatcher("resultQuiz.jsp").forward(request, response);
             } else {
                 request.setAttribute("reject", "reject");
-                request.getRequestDispatcher("takeQuiz3.jsp").forward(request, response);
+                request.getRequestDispatcher("resultQuiz.jsp").forward(request, response);
             }
 
         } catch (Exception e) {

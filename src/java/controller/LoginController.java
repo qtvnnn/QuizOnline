@@ -62,7 +62,7 @@ public class LoginController extends HttpServlet {
             throws ServletException, IOException {
         try {
             AccountDAO accountDAO = new AccountDAOImpl();
-            String username = request.getParameter("user");
+            String username = request.getParameter("user").trim();
             String pass = request.getParameter("pass");
             // create session to save account
             HttpSession sessionAcc = request.getSession();

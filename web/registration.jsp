@@ -28,12 +28,12 @@
                 <form id="register" action="register" method="post">
                     <div>
                         <label for="user" class="text-color">User Name: </label>
-                        <input type="text" id="user" required="" name="user" value="${accountFail != null ? accountFail.getUserName() : ''}" class="form-user color-textbox" >   
+                        <input type="text" id="user" required="" maxlength="20" name="user" value="${accountFail != null ? accountFail.getUserName() : ''}" class="form-user color-textbox" >   
                     </div>
 
                     <div>
                         <label for="pass" class="text-color">Password: </label>
-                        <input type="password" id="pass" required="" name="pass" class="form-pass color-textbox" >   
+                        <input type="password" id="pass" required="" maxlength="20" name="pass" class="form-pass color-textbox" >   
                     </div>
 
                     <div>
@@ -46,32 +46,16 @@
 
                     <div>
                         <label class="text-color" for="email">Email: </label>
-                        <input type="email" id="email" required="" name="email" value="${accountFail != null ? accountFail.getEmail() : ''}" class="form-email color-textbox">
+                        <input type="email" id="email" required="" maxlength="30" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="email" value="${accountFail != null ? accountFail.getEmail() : ''}" class="form-email color-textbox">
                     </div>
 
                     <div>
-                        <input type="button" onclick="checkRegis()" class="button"  value="Register">
+                        <input type="submit" class="button"  value="Register">
                     </div>
                 </form>
                 <c:if test="${notification != null}">
                     <a>${notification}</a>
                 </c:if>
             </div>
-            <script>
-                function hasWhiteSpace(s)
-                {
-                    return s.indexOf(' ') >= 0;
-                }
-
-                function checkRegis() {
-                    var username = document.getElementById("user").value;
-                    if (hasWhiteSpace(username)) {
-                        alert('Username can not have space');
-                    }
-                    else {
-                        document.getElementById("register").submit();
-                    }
-                }
-            </script>
     </body>
 </html>

@@ -28,7 +28,7 @@ import javax.servlet.http.HttpSession;
  * This class extends from abstract class BaseAuthenticationController.
  * This class uses functions in <code>QuestionDAO</code> to get a list of random questions 
  * and <code>OptionDAO</code> to get a list of option of those questions.
- * Then redirects the user to the <code>takeQuiz2.jsp</code> page.
+ * Then redirects the user to the <code>doQuiz.jsp</code> page.
  *
  * @author nangnnhe130538
  */
@@ -78,7 +78,7 @@ public class TakeQuizController extends BaseAuthenticationController {
                 request.setAttribute("listO", listO);
                 request.setAttribute("number", number);
                 sessionTime.setAttribute("time", millis);
-                request.getRequestDispatcher("takeQuiz2.jsp").forward(request, response);
+                request.getRequestDispatcher("doQuiz.jsp").forward(request, response);
             }
         } catch (Exception e) {
             Logger.getLogger(TakeQuizController.class.getName()).log(Level.SEVERE, null, e);

@@ -62,9 +62,9 @@ public class RegisterController extends HttpServlet {
             throws ServletException, IOException {
         try {
             AccountDAO accountDAO = new AccountDAOImpl();
-            String username = request.getParameter("user");
+            String username = request.getParameter("user").trim();
             String pass = request.getParameter("pass");
-            String email = request.getParameter("email");
+            String email = request.getParameter("email").trim();
             String idUserType = request.getParameter("type");
             //get infomation of account
             String notification = null;

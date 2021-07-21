@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
  * 
  * @author nangnnhe130538
  */
-public class MyFilter implements Filter {
+public class RoleFilter implements Filter {
 
     /**
      * 

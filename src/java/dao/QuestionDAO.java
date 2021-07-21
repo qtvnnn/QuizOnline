@@ -30,8 +30,8 @@ public interface QuestionDAO {
     /**
      * Get all questions from <code>Question</code> table in database and paging
      * 
-     * @param currentPage it is <code>int</code> number
-     * @param numberQuesInPage it is <code>int</code> number
+     * @param currentPage it is an<code>int</code> number
+     * @param numberQuesInPage it is an<code>int</code> number
      * @return a list of <code>Question</code> object. It is a <code>java.util.List</code> object
      * @throws Exception 
      */
@@ -39,14 +39,14 @@ public interface QuestionDAO {
     /**
      * Get all the number of questions records in the database
      * 
-     * @return count it is <code>int</code> number
+     * @return count it is an<code>int</code> number
      * @throws Exception 
      */
     public int countQuestion() throws Exception;
     /**
      * Get a record question from <code>Question</code> table by id in the database
      * 
-     * @param questionId it is <code>int</code> number
+     * @param questionId it is an<code>int</code> number
      * @return question it is a <code>Question</code> object
      * @throws Exception 
      */
@@ -54,7 +54,7 @@ public interface QuestionDAO {
     /**
      * Delete a record question from <code>Question</code> table by id in the database
      * 
-     * @param questionId it is <code>int</code> number
+     * @param questionId it is an<code>int</code> number
      * @throws Exception 
      */
     public void deleteQuestionById(int questionId) throws Exception;
@@ -68,7 +68,7 @@ public interface QuestionDAO {
     /**
      * Returns the last Question id generated from <code>Question</code> table in the database
      * 
-     * @return id it is <code>int</code> number
+     * @return id it is an<code>int</code> number
      * @throws Exception 
      */
     public int getIdQuestion() throws Exception;

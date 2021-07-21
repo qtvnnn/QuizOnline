@@ -78,7 +78,6 @@ public class DBContext {
      *
      * @return connection
      * @throws ClassNotFoundException
-     * @throws SQLException
      */
     public Connection getConnection() throws Exception {
         String url = "jdbc:sqlserver://" + serverName + ":" + portNumber + ";databaseName=" + dbName;

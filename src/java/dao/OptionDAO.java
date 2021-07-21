@@ -31,7 +31,7 @@ public interface OptionDAO {
     /**
      * Get all Options from <code>Option</code> table by id of a question
      * 
-     * @param questionId it is <code>int</code> number
+     * @param questionId it is an<code>int</code> number
      * @return a list of <code>Option</code> object. It is a <code>java.util.List</code> object
      * @throws Exception 
      */
@@ -39,7 +39,7 @@ public interface OptionDAO {
     /**
      * Delete all of records options from <code>Option</code> table by question id in the database
      * 
-     * @param questionId it is <code>int</code> number
+     * @param questionId it is an<code>int</code> number
      * @throws Exception 
      */
     public void deleteOption(int questionId) throws Exception;

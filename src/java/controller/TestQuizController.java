@@ -26,12 +26,12 @@ import javax.servlet.http.HttpSession;
 /**
  * This class uses functions in <code>OptionDAO</code> to check the correct answer of the question
  * and uses Session to calculate the test end time.
- * Then redirects the user to the <code>takeQuiz3.jsp</code> page to take score and show user's test results.
+ * Then redirects the user to the <code>takeQuiz3.jsp</code> page to calculate score and show user's test results.
  *
  * @author nangnnhe130538
  */
 @WebServlet(name = "takeQuiz2", urlPatterns = {"/takeQuiz2"})
-public class TakeQuiz2Controller extends HttpServlet {
+public class TestQuizController extends HttpServlet {
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -52,7 +52,7 @@ public class TakeQuiz2Controller extends HttpServlet {
      * Handles the HTTP <code>POST</code> method.
      * Use <code>getListOptions</code> function in <code>OptionDAO</code> class to get list options of question 
      * and check status of this option. True is correct, false is not correct.
-     * Use <code>HttpSession</code> to get time start to calculate the test end time then take score
+     * Use <code>HttpSession</code> to get time start to calculate the test end time, then calculate score
      * Then forward them to the page <code>takeQuiz3.jsp</code> to show user's test results.
      * 
      * @param request it is an object of <code>javax.servlet.http.HttpServletRequest</code>
@@ -115,7 +115,7 @@ public class TakeQuiz2Controller extends HttpServlet {
             }
 
         } catch (Exception e) {
-            Logger.getLogger(TakeQuiz2Controller.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(TestQuizController.class.getName()).log(Level.SEVERE, null, e);
             request.setAttribute("errorMessage", e.toString());
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }

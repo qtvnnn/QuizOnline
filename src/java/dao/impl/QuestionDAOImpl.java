@@ -72,8 +72,8 @@ public class QuestionDAOImpl extends DBContext implements QuestionDAO{
     /**
      * Get all questions from <code>Question</code> table in database and paging
      * 
-     * @param currentPage it is <code>int</code> number
-     * @param numberQuesInPage it is <code>int</code> number
+     * @param currentPage it is an <code>int</code> number
+     * @param numberQuesInPage it is an <code>int</code> number
      * @return a list of <code>Question</code> object. It is a <code>java.util.List</code> object
      * @throws Exception 
      */
@@ -116,7 +116,7 @@ public class QuestionDAOImpl extends DBContext implements QuestionDAO{
     /**
      * Get all the number of questions records in the database
      * 
-     * @return count it is <code>int</code> number
+     * @return count it is an <code>int</code> number
      * @throws Exception 
      */
     @Override
@@ -147,7 +147,7 @@ public class QuestionDAOImpl extends DBContext implements QuestionDAO{
     /**
      * Get a record question from <code>Question</code> table by id in the database
      * 
-     * @param questionId it is <code>int</code> number
+     * @param questionId it is an <code>int</code> number
      * @return question it is a <code>Question</code> object
      * @throws Exception 
      */

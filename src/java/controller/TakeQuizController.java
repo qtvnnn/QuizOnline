@@ -57,10 +57,10 @@ public class TakeQuizController extends BaseAuthenticationController {
 
             //get number user input
             QuestionDAO questionDAO = new QuestionDAOImpl();
-            ArrayList<Question> listQ = questionDAO.getListQuestionsTop(number); //random
+            ArrayList<Question> listQuestions = questionDAO.getListQuestionsTop(number); //random
             //check number question in bank and compare with number question user input 
-            int countQ = questionDAO.countQuestion();
-            if (number > countQ) {
+            int countQuestion = questionDAO.countQuestion();
+            if (number > countQuestion) {
                 String notification = "Not enough question for you";
                 request.setAttribute("notification", notification);
                 request.getRequestDispatcher("takeQuiz.jsp").forward(request, response);
@@ -68,14 +68,14 @@ public class TakeQuizController extends BaseAuthenticationController {
                 int[] arrN = new int[number];
                 for (int i = 0; i < number; i++) {
                     //take id of question in bank
-                    arrN[i] = listQ.get(i).getId();
+                    arrN[i] = listQuestions.get(i).getId();
                 }
                 sessionArrN.setAttribute("arrN", arrN);
                 OptionDAO optionDAO = new OptionDAOImpl();
-                ArrayList<Option> listO = optionDAO.getListOptionsByQuestionId(arrN);
+                ArrayList<Option> listOptions = optionDAO.getListOptionsByQuestionId(arrN);
                 //get list question
-                request.setAttribute("listQ", listQ);
-                request.setAttribute("listO", listO);
+                request.setAttribute("listQ", listQuestions);
+                request.setAttribute("listO", listOptions);
                 request.setAttribute("number", number);
                 sessionTime.setAttribute("time", millis);
                 request.getRequestDispatcher("doQuiz.jsp").forward(request, response);

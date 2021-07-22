@@ -77,9 +77,9 @@ public class TestQuizController extends HttpServlet {
                     boolean flaq = true;
                     ArrayList<Option> listOptions = optionDAO.getListOptions(arrN[i]);
                     for (int j = 0; j < listOptions.size(); j++) {
-                        String takeO = request.getParameter(listOptions.get(j).getId() + "");
+                        String takeOption = request.getParameter(listOptions.get(j).getId() + "");
                         boolean check;
-                        if (takeO == null) {
+                        if (takeOption == null) {
                             check = false;
                         } else {
                             check = true;

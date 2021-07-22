@@ -43,8 +43,8 @@ public class RoleFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
         String path = req.getServletPath();
-        Account acc = (Account) req.getSession().getAttribute("acc");
-        if (acc == null) {
+        Account account = (Account) req.getSession().getAttribute("acc");
+        if (account == null) {
             if (path.endsWith(".jsp")) {
                 req.getRequestDispatcher("login").forward(req, resp);
             }

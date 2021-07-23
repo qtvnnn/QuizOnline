@@ -65,15 +65,15 @@ public class MakeQuizController extends BaseAuthenticationController {
             option.add(option2);
             option.add(option3);
             option.add(option4);
-            ArrayList<String> cbx = new ArrayList<>();
-            String cbxo1 = request.getParameter("cbxo1");
-            String cbxo2 = request.getParameter("cbxo2");
-            String cbxo3 = request.getParameter("cbxo3");
-            String cbxo4 = request.getParameter("cbxo4");
+            ArrayList<String> comboboxResult = new ArrayList<>();
+            String result1 = request.getParameter("cbxo1");
+            String result2 = request.getParameter("cbxo2");
+            String result3 = request.getParameter("cbxo3");
+            String result4 = request.getParameter("cbxo4");
 
             String message = "";
             boolean flaq = true;
-            if (cbxo1 == null && cbxo2 == null && cbxo3 == null && cbxo4 == null) {
+            if (result1 == null && result2 == null && result3 == null && result4 == null) {
                 message = "Your question don't have any answers ! ";
                 flaq = false;
                 request.setAttribute("message", message);
@@ -81,24 +81,24 @@ public class MakeQuizController extends BaseAuthenticationController {
                 request.setAttribute("listOption", option);
                 request.getRequestDispatcher("makeQuiz.jsp").forward(request, response);
             } else {
-                if (cbxo1 == null) {
-                    cbxo1 = "";
+                if (result1 == null) {
+                    result1 = "";
                 }
-                if (cbxo2 == null) {
-                    cbxo2 = "";
+                if (result2 == null) {
+                    result2 = "";
                 }
-                if (cbxo3 == null) {
-                    cbxo3 = "";
+                if (result3 == null) {
+                    result3 = "";
                 }
-                if (cbxo4 == null) {
-                    cbxo4 = "";
+                if (result4 == null) {
+                    result4 = "";
                 }
-                cbx.add(cbxo1);
-                cbx.add(cbxo2);
-                cbx.add(cbxo3);
-                cbx.add(cbxo4);
+                comboboxResult.add(result1);
+                comboboxResult.add(result2);
+                comboboxResult.add(result3);
+                comboboxResult.add(result4);
             }
-            if (cbxo1.equals("true") && cbxo2.equals("true") && cbxo3.equals("true") && cbxo4.equals("true")) {
+            if (result1.equals("true") && result2.equals("true") && result3.equals("true") && result4.equals("true")) {
                 flaq = false;
                 message = "Your question have all answers is right ! ";
                 request.setAttribute("message", message);
@@ -124,7 +124,7 @@ public class MakeQuizController extends BaseAuthenticationController {
                     options.setContent(option.get(i));
                     //set question number
                     options.setQuestion(questionDAO.getQuestionById(questionId));
-                    if (cbx.get(i).equals("true")) {
+                    if (comboboxResult.get(i).equals("true")) {
                         //set value of satatus
                         options.setStatus(true);
                     } else {

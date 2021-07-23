@@ -65,14 +65,14 @@ public class TakeQuizController extends BaseAuthenticationController {
                 request.setAttribute("notification", notification);
                 request.getRequestDispatcher("takeQuiz.jsp").forward(request, response);
             } else {
-                int[] arrN = new int[number];
+                int[] arrQuestionId = new int[number];
                 for (int i = 0; i < number; i++) {
                     //take id of question in bank
-                    arrN[i] = listQuestions.get(i).getId();
+                    arrQuestionId[i] = listQuestions.get(i).getId();
                 }
-                sessionArrN.setAttribute("arrN", arrN);
+                sessionArrN.setAttribute("arrN", arrQuestionId);
                 OptionDAO optionDAO = new OptionDAOImpl();
-                ArrayList<Option> listOptions = optionDAO.getListOptionsByQuestionId(arrN);
+                ArrayList<Option> listOptions = optionDAO.getListOptionsByQuestionId(arrQuestionId);
                 //get list question
                 request.setAttribute("listQ", listQuestions);
                 request.setAttribute("listO", listOptions);

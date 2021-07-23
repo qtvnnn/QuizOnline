@@ -68,12 +68,12 @@ public class TestQuizController extends HttpServlet {
             long timeStart = (long) session.getAttribute("time");
             if (timeSubmit - (number * 10 * 1000 + 800) <= timeStart) {
                 int count = 0;
-                int[] arrN = new int[number];
-                arrN = (int[]) session.getAttribute("arrN");
+                int[] arrQuestionId = new int[number];
+                arrQuestionId = (int[]) session.getAttribute("arrN");
                 OptionDAO optionDAO = new OptionDAOImpl();
-                for (int i = 0; i < arrN.length; i++) {
+                for (int i = 0; i < arrQuestionId.length; i++) {
                     boolean flaq = true;
-                    ArrayList<Option> listOptions = optionDAO.getListOptions(arrN[i]);
+                    ArrayList<Option> listOptions = optionDAO.getListOptions(arrQuestionId[i]);
                     for (Option listOption : listOptions) {
                         String takeOption = request.getParameter(listOption.getId() + "");
                         boolean check;

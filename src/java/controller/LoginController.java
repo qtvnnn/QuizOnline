@@ -65,14 +65,14 @@ public class LoginController extends HttpServlet {
             String username = request.getParameter("user").trim();
             String pass = request.getParameter("pass");
             // create session to save account
-            HttpSession sessionAcc = request.getSession();
+            HttpSession sessionAccount = request.getSession();
 
             //check username exist
             if (username != null) {
                 Account account = accountDAO.getAccountByUser(username);
                 //check password is correct and save to session
                 if (account != null && pass.equals(account.getPassword())) {
-                    sessionAcc.setAttribute("acc", account);
+                    sessionAccount.setAttribute("acc", account);
                     response.sendRedirect("HomeController");
                 } else {
                     //username is not exist send notification to jsp

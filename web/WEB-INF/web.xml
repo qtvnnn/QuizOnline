@@ -56,6 +56,14 @@
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/HomeController</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>managerQuizController</servlet-name>
+        <url-pattern>/manager</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>takeQuiz2</servlet-name>
+        <url-pattern>/takeQuiz2</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

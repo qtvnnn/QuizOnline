@@ -76,7 +76,8 @@ public class LoginController extends HttpServlet {
                     response.sendRedirect("HomeController");
                 } else {
                     //username is not exist send notification to jsp
-                    String notification = "Login Fail";
+                    String notification = "Incorrect account or password";
+                    request.setAttribute("username", username);
                     request.setAttribute("notification", notification);
                     request.getRequestDispatcher("login.jsp").forward(request, response);
                 }

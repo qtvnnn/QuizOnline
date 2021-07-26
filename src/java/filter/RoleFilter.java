@@ -29,6 +29,9 @@ import javax.servlet.http.HttpServletResponse;
 public class RoleFilter implements Filter {
 
     /**
+     * The doFilter method of the Filter is called by the container each time a 
+     * request/response pair is passed through the chain due to a client request 
+     * for a resource at the end of the chain
      * 
      * @param request it is a object of <code>javax.servlet.http.HttpServletRequest</code>
      * @param response it is a object of  <code>javax.servlet.http.HttpServletResponse</code>
@@ -61,10 +64,19 @@ public class RoleFilter implements Filter {
         chain.doFilter(request, response);
     }
 
+    /**
+     * Called by the web container to indicate to a filter that it is being placed into service.
+     * 
+     * @param filterConfig it is a object of <code>javax.servlet.FilterConfig</code>
+     * @throws ServletException 
+     */
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
     }
 
+    /**
+     * Called by the web container to indicate to a filter that it is being taken out of service
+     */
     @Override
     public void destroy() {
     }

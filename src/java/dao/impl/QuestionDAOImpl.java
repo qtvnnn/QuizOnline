@@ -13,6 +13,7 @@ import entity.Question;
 import context.DBContext;
 import dao.OptionDAO;
 import dao.QuestionDAO;
+import entity.Option;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -213,7 +214,7 @@ public class QuestionDAOImpl extends DBContext implements QuestionDAO{
     /**
      * Insert a new record question to <code>Question</code> table in the database
      * 
-     * @param question it is an <code>Question</code> object
+     * @param question it is a <code>Question</code> object
      * @throws Exception 
      */
     @Override
@@ -270,6 +271,55 @@ public class QuestionDAOImpl extends DBContext implements QuestionDAO{
             closeConnection(conn);
         }
         return id;
+    }
+
+    /**
+     * Insert a new record Question to <code>Question</code> table and insert
+     * list of Options by this Question Id to <code>Option</code> table in the database.
+     * 
+     * @param question it is a <code>Question</code> object
+     * @param options it is an array list of <code>Option</code> object
+     * @throws Exception 
+     */
+    @Override
+    public void addQuestionOption(Question question, ArrayList<Option> options) throws Exception {
+        ResultSet rs = null;
+        PreparedStatement statement = null;
+        Connection conn = null;
+        try {
+            String sql =    "INSERT INTO [dbo].[Question] ([content], [date_Create]) \n" +
+                            "VALUES (?, ?)\n" +
+                            "INSERT INTO [dbo].[Option] ([O_content], [q_id], [status]) \n" +
+                            "VALUES	";
+            
+            for (int i = 0; i < options.size(); i++) {
+                if (i < options.size() - 1){
+                    sql += "(?, @@identity, ?),";
+                }else{
+                    sql += "(?, @@identity, ?)";
+                }
+            }
+            conn = getConnection();
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, question.getContent());
+            statement.setDate(2, question.getDateCreate());
+            
+            int paramIndex = 3;
+            for (Option option : options) {
+                statement.setString(paramIndex, option.getContent());
+                paramIndex++;
+                statement.setBoolean(paramIndex, option.isStatus());
+                paramIndex++;
+            }
+            
+            statement.executeUpdate();
+        } catch (Exception ex) {
+            throw ex;
+        } finally {
+            closeResultSet(rs);
+            closePreparedStatement(statement);
+            closeConnection(conn);
+        }
     }
     
 }

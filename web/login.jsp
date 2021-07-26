@@ -27,10 +27,13 @@
 
             <div class="login">
                 <h3 class="font-wight">Login Form</h3>
+                <c:if test="${notification != null}">
+                    <a style="color:red;">${notification}</a>
+                </c:if>
                 <form action="login" method="post">
                     <div>
                         <label for="user" class="text-color">User Name: </label>
-                        <input type="text" id="user" required="" name="user" class="form-user color-textbox" maxlength="20">   
+                        <input type="text" id="user" required="" name="user" value="${username != null ? username : ''}" class="form-user color-textbox" maxlength="20">   
                     </div>
                     <div>
                         <label for="pass" class="text-color">Password: </label>
@@ -40,9 +43,6 @@
                         <button type="submit" class="button">Sign in</button>
                         <a href="register" class="link-href text-color"><b>Register</b></a>
                     </div>
-                    <c:if test="${notification != null}">
-                        <a>${notification}</a>
-                    </c:if>
                 </form>
             </div>
         </div>

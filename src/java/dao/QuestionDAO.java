@@ -9,8 +9,10 @@
  */
 package dao;
 
+import entity.Option;
 import entity.Question;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The interface of <code>QuestionDAOImpl</code> class defines methods to help us 
@@ -72,4 +74,14 @@ public interface QuestionDAO {
      * @throws Exception 
      */
     public int getIdQuestion() throws Exception;
+    
+    /**
+     * Insert a new record Question to <code>Question</code> table and insert
+     * list of Options by this Question Id to <code>Option</code> table in the database.
+     * 
+     * @param question it is a <code>Question</code> object
+     * @param options it is an array list of <code>Option</code> object
+     * @throws Exception 
+     */
+    public void addQuestionOption(Question question, ArrayList<Option> options) throws Exception;
 }

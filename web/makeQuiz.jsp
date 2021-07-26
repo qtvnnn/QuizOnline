@@ -24,6 +24,9 @@
             <%@include file="header.jsp"%>
 
             <div class="login">
+                <c:if test="${message != null}">
+                    <a style="color:red;">${message}</a>
+                </c:if>
                 <form id="makeQuiz" action="makeQuiz" method="post">
                     <table>
                         <tr>
@@ -56,14 +59,11 @@
                             <input type="checkbox" id="option3" name="cbxo3" <c:if test="${flaq != null}">checked=""</c:if> value="true">
                             <label for="option3" class="text-color">Option 3</label>
                             <input type="checkbox" id="option4" name="cbxo4" <c:if test="${flaq != null}">checked=""</c:if> value="true">
-                            <label for="option4" class="text-color">Option 4</label>
-                        </div>
-                        <div>
-                            <input type="submit" class="button" id="btn-makeQ" value="Save">
-                        </div>
-                    <c:if test="${message != null}">
-                        <a>${message}</a>
-                    </c:if>
+                        <label for="option4" class="text-color">Option 4</label>
+                    </div>
+                    <div>
+                        <input type="submit" class="button" id="btn-makeQ" value="Save">
+                    </div>
                 </form>
             </div>
         </div>

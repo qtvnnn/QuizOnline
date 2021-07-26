@@ -25,6 +25,9 @@
             <%@include file="header.jsp"%>
             <div class="login" >
                 <h3 class="header font-wight">Registration Form</h3>
+                <c:if test="${notification != null}">
+                    <a style="color:red;">${notification}</a>
+                </c:if>
                 <form id="register" action="register" method="post">
                     <div>
                         <label for="user" class="text-color">User Name: </label>
@@ -53,9 +56,6 @@
                         <input type="submit" class="button"  value="Register">
                     </div>
                 </form>
-                <c:if test="${notification != null}">
-                    <a>${notification}</a>
-                </c:if>
             </div>
     </body>
 </html>

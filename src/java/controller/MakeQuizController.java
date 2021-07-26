@@ -11,9 +11,7 @@ package controller;
 
 import entity.Option;
 import entity.Question;
-import dao.OptionDAO;
 import dao.QuestionDAO;
-import dao.impl.OptionDAOImpl;
 import dao.impl.QuestionDAOImpl;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,9 +33,8 @@ public class MakeQuizController extends BaseAuthenticationController {
 
     /**
      * Handles the HTTP <code>POST</code> method. 
-     * Use <code>addQuestion</code> function in <code>QuestionDAO</code> class to create a question from user input data.
-     * Use <code>addOption</code> function in <code>OptionDAO</code> class to create list option of this question
-     * from user input data.
+     * Use <code>addQuestionOption</code> function in <code>QuestionDAO</code> class to create 
+     * a question and list of options of this question from user input data.
      * Create Quiz success redirects to <code>manager</code> controller.
      * 
      * @param request it is an object of <code>javax.servlet.http.HttpServletRequest</code>
@@ -55,12 +52,12 @@ public class MakeQuizController extends BaseAuthenticationController {
             java.sql.Date date = new java.sql.Date(millis);
 
             //get infomation question and answers from jsp
-            String question = request.getParameter("question");
+            String question = request.getParameter("question").trim();
             ArrayList<String> option = new ArrayList<>();
-            String option1 = request.getParameter("option1");
-            String option2 = request.getParameter("option2");
-            String option3 = request.getParameter("option3");
-            String option4 = request.getParameter("option4");
+            String option1 = request.getParameter("option1").trim();
+            String option2 = request.getParameter("option2").trim();
+            String option3 = request.getParameter("option3").trim();
+            String option4 = request.getParameter("option4").trim();
             option.add(option1);
             option.add(option2);
             option.add(option3);
@@ -114,28 +111,26 @@ public class MakeQuizController extends BaseAuthenticationController {
                 Question question1 = new Question();
                 question1.setContent(question);
                 question1.setDateCreate(date);
-                questionDAO.addQuestion(question1);
-                int questionId = questionDAO.getIdQuestion();
-                OptionDAO optionDAO = new OptionDAOImpl();
+                ArrayList<Option> listOpions = new ArrayList<>();
                 //add option to database
                 for (int i = 0; i < 4; i++) {
                     Option options = new Option();
                     //set content for option
                     options.setContent(option.get(i));
                     //set question number
-                    options.setQuestion(questionDAO.getQuestionById(questionId));
                     if (comboboxResult.get(i).equals("true")) {
                         //set value of satatus
                         options.setStatus(true);
                     } else {
                         options.setStatus(false);
                     }
-                    optionDAO.addOption(options);
+                    listOpions.add(options);
                 }
+                questionDAO.addQuestionOption(question1, listOpions);
                 //redirect to managerpage
                 response.sendRedirect("manager");
             }
-        } catch (Exception e) {
+        } catch (Exception e) {                       
             Logger.getLogger(MakeQuizController.class.getName()).log(Level.SEVERE, null, e);
             request.setAttribute("errorMessage", e.toString());
             request.getRequestDispatcher("error.jsp").forward(request, response);

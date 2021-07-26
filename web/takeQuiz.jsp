@@ -25,16 +25,16 @@
 
             <div class="login">
                 <h3 class="text-color">Welcome </h3> <a class="color-user">${acc.getUserName()}</a>
+                <div>
+                    <c:if test="${notification != null}">
+                        <a style="color:red;">Not enough question for you</a>
+                    </c:if>
+                </div>
                 <form method="post" action="takeQuiz">
                     <label class="text-color">Enter number of questions: </label><br>
                     <input class="num" name="numberQ" type="number" required="">
                     <button type="submit" class="button button-start">Start</button>
                 </form>
-                <div>
-                    <c:if test="${notification != null}">
-                        <a>Not enough question for you</a>
-                    </c:if>
-                </div>
             </div>
         </div>
 

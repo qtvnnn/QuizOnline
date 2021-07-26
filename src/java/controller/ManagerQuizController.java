@@ -93,18 +93,18 @@ public class ManagerQuizController extends BaseAuthenticationController {
      * all of question in the database.     * 
      * Then forward them to the page <code>managerQuiz.jsp</code>.
      * 
-     * @param req it is an object of <code>javax.servlet.http.HttpServletRequest</code>
-     * @param resp it is an object of <code>javax.servlet.http.HttpServletResponse</code>
+     * @param request it is an object of <code>javax.servlet.http.HttpServletRequest</code>
+     * @param response it is an object of <code>javax.servlet.http.HttpServletResponse</code>
      * @throws ServletException
      * @throws IOException 
      */
     @Override
-    protected void processGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void processGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             QuestionDAO questionDAO = new QuestionDAOImpl();
             int count = questionDAO.countQuestion();
             int numberInPage = 4;
-            String currentPage = req.getParameter("id");
+            String currentPage = request.getParameter("id");
             if (currentPage == null) {
                 currentPage = "1";
             }
@@ -114,16 +114,16 @@ public class ManagerQuizController extends BaseAuthenticationController {
             int pagecount = (count % numberInPage == 0) ? count / numberInPage : count / numberInPage + 1;
             //caculate munber of page
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
-            req.setAttribute("df", dateFormat);
-            req.setAttribute("count", count);
-            req.setAttribute("pagecount", pagecount);
-            req.setAttribute("listQ", listQuestion);
-            req.getRequestDispatcher("managerQuiz.jsp").forward(req, resp);
+            request.setAttribute("df", dateFormat);
+            request.setAttribute("count", count);
+            request.setAttribute("pagecount", pagecount);
+            request.setAttribute("listQ", listQuestion);
+            request.getRequestDispatcher("managerQuiz.jsp").forward(request, response);
 
         } catch (Exception e) {
             Logger.getLogger(ManagerQuizController.class.getName()).log(Level.SEVERE, null, e);
-            req.setAttribute("errorMessage", e.toString());
-            req.getRequestDispatcher("error.jsp").forward(req, resp);
+            request.setAttribute("errorMessage", e.toString());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
         }
     }
     /**

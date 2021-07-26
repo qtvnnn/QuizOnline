@@ -47,7 +47,7 @@ public class HomeController extends BaseAuthenticationController {
     /**
      * Pages used by teachers only
      *
-     * @return boolean
+     * @return boolean it is a <code>boolean</code>
      */
     @Override
     public boolean requiredTeacher() {

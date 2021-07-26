@@ -37,7 +37,7 @@ public class QuestionDAOImpl extends DBContext implements QuestionDAO{
      * Get a number of the latest questions from <code>Question</code> table in the database
      * 
      * @param top it is an <code>int</code> number  
-     * @return a list of <code>Question</code> object. It is a <code>java.util.List</code> object
+     * @return a list of <code>Question</code> object. It is a <code>java.util.ArrayList</code> object
      * @throws Exception 
      */
     @Override
@@ -75,7 +75,7 @@ public class QuestionDAOImpl extends DBContext implements QuestionDAO{
      * 
      * @param currentPage it is an <code>int</code> number
      * @param numberQuesInPage it is an <code>int</code> number
-     * @return a list of <code>Question</code> object. It is a <code>java.util.List</code> object
+     * @return a list of <code>Question</code> object. It is a <code>java.util.ArrayList</code> object
      * @throws Exception 
      */
     @Override

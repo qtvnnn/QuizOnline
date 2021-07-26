@@ -12,7 +12,6 @@ package dao;
 import entity.Option;
 import entity.Question;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * The interface of <code>QuestionDAOImpl</code> class defines methods to help us 
@@ -25,7 +24,7 @@ public interface QuestionDAO {
      * Get a number of the latest questions from <code>Question</code> table in the database
      * 
      * @param top it is an <code>int</code> number  
-     * @return a list of <code>Question</code> object. It is a <code>java.util.List</code> object
+     * @return a list of <code>Question</code> object. It is a <code>java.util.ArrayList</code> object
      * @throws Exception 
      */
     public ArrayList<Question> getListQuestionsTop(int top) throws Exception;
@@ -34,7 +33,7 @@ public interface QuestionDAO {
      * 
      * @param currentPage it is an<code>int</code> number
      * @param numberQuesInPage it is an<code>int</code> number
-     * @return a list of <code>Question</code> object. It is a <code>java.util.List</code> object
+     * @return a list of <code>Question</code> object. It is a <code>java.util.ArrayList</code> object
      * @throws Exception 
      */
     public ArrayList<Question> getListQuestionsPaging(int currentPage, int numberQuesInPage) throws Exception;

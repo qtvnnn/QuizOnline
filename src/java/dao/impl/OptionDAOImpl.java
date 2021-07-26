@@ -33,7 +33,7 @@ public class OptionDAOImpl extends DBContext implements OptionDAO {
      * Get options according to the id of the question in the required question list
      * 
      * @param arrQuestionId it is a <code>java.util.ArrayList</code> of <code>int</code>
-     * @return a list of <code>Option</code> object. It is a <code>java.util.List</code> object
+     * @return a list of <code>Option</code> object. It is a <code>java.util.ArrayList</code> object
      * 
      * @throws Exception 
      */

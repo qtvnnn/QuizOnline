@@ -22,7 +22,7 @@ public interface UserTypeDAO {
     /**
      * Get a list of all the number types of users in the database
      * 
-     * @return a list of <code>UserType</code> object. It is a <code>java.util.List</code> object
+     * @return a list of <code>UserType</code> object. It is a <code>java.util.ArrayList</code> object
      * @throws Exception 
      */
     public ArrayList<UserType> getListUserType() throws Exception;

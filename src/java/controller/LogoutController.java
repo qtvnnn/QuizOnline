@@ -37,15 +37,15 @@ public class LogoutController extends BaseAuthenticationController {
      * Uses <code>invalidate()</code> method to cancel all saved sessions, then redirects 
      * the user to the <code>login.jsp</code> page.
      * 
-     * @param req it is an object of <code>javax.servlet.http.HttpServletRequest</code>
-     * @param resp it is an object of <code>javax.servlet.http.HttpServletResponse</code>
+     * @param request it is an object of <code>javax.servlet.http.HttpServletRequest</code>
+     * @param response it is an object of <code>javax.servlet.http.HttpServletResponse</code>
      * @throws ServletException
      * @throws IOException 
      */
     @Override
-    protected void processGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().invalidate();
-        req.getRequestDispatcher("login").forward(req, resp);
+    protected void processGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getSession().invalidate();
+        request.getRequestDispatcher("login").forward(request, response);
     }
 
     /**
